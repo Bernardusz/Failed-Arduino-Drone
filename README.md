@@ -1,6 +1,6 @@
 # 🚁 Arduino-Dual-Drone Project
 
-> **A lightweight two-motor drone system with live stabilization using MPU6050 and Bluetooth control via HC-05. Modular, expandable, and student-built with love.**
+> **A lightweight two-motor drone system with Bluetooth control via HC-05. Modular, expandable, and student-built with love 💖.**
 
 ---
 
@@ -8,7 +8,6 @@
 
 This project is a micro drone built on **Arduino Uno** featuring:
 - **2 Brushless Motors + ESCs**
-- **MPU6050 Gyroscope Sensor** for tilt detection and stabilization
 - **HC-05 Bluetooth module** for remote control via custom Android app
 - Modular software structure using **PlatformIO** and C++
 
@@ -17,7 +16,6 @@ This project is a micro drone built on **Arduino Uno** featuring:
 ## 🎯 Features
 
 - 🛠️ **Manual control via Bluetooth (WASD control scheme)**
-- 📈 **Automatic tilt correction using MPU6050**
 - ✨ **Clean modular code split into multiple `.cpp` and `.h` files**
 - 📡 **HC-05 Bluetooth receiver with dedicated communication module**
 - 🔄 **ESC control using Servo library (PWM-based)**
@@ -29,17 +27,16 @@ This project is a micro drone built on **Arduino Uno** featuring:
 
 ```bash
 Arduino-Dual-Drone/
-├── include/          
-│   ├── drone.h
-│   ├── sensor.h
-│   └── comm.h
-├── src/
-│   ├── main.cpp
-│   ├── drone.cpp
-│   ├── sensor.cpp
-│   └── comm.cpp
+├── include
+│   ├── comm.h
+│   └── drone.h
+├── lib
 ├── platformio.ini
-└── README.md
+├── src
+│   ├── comm.cpp
+│   ├── drone.cpp
+│   └── main.cpp
+└── test
 ```
 
 ---
@@ -51,7 +48,6 @@ Arduino-Dual-Drone/
 - 2x A2212 1000KV Brushless Motor
 - 2x 30A ESC with BEC
 - 2x Pairs of 1045L/R Propellers for brushless motors (CW & CCW)
-- 1x MPU6050 (Gyroscope & Accelerometer)
 - HC-05 Bluetooth Module
 - Li-Po 7.4V 1500mAh 2S Battery (You can upgrade to Li-Po 3S (11.1V) Battery
 - Jumper Cables
@@ -65,8 +61,6 @@ Arduino-Dual-Drone/
 | :--------------------- | :---------- | :----------------------------------------------- |
 | Motor Left ESC Signal  | D6          | Controlled via Servo PWM                         |
 | Motor Right ESC Signal | D5          | Controlled via Servo PWM                         |
-| MPU6050 SDA            | A4          | I2C communication                                |
-| MPU6050 SCL            | A5          | I2C communication                                |
 | HC-05 TX               | RX (D0)     | Bluetooth serial receive                         |
 | HC-05 RX               | TX (D1)     | Bluetooth serial transmit                        |
 | Li-Po Battery          | ESC T-plug  | ESC powers motors and BEC provides 5V to Arduino |
@@ -78,10 +72,10 @@ Arduino-Dual-Drone/
 
 📊 Optional ASCII/Diagram:
 ```
-[HC-05]        [MPU6050]
-   |               |
- TX/RX          SDA/SCL
-   |               |
+[HC-05]
+   |
+ TX/RX
+   |            
   [Arduino UNO CH340]
     |       |       |
   D6 ESC  D5 ESC    5V/GND (from ESC BEC)
@@ -93,10 +87,6 @@ Arduino-Dual-Drone/
 ## ⚙️ Dependencies
 
 - Servo (by Arduino)
-- Wire (by Arduino)
-- Adafruit_MPU6050 (v2.0.0 or newer)
-
-(installed via PlatformIO lib_deps in platformio.ini)
 
 ---
 
@@ -104,12 +94,10 @@ Arduino-Dual-Drone/
 | Name                   | Role                                   |
 | :--------------------- | :------------------------------------- |
 | Bernardus (me 😎)      | Project Lead / Programmer / Repo Owner |
-| Austin | Programmer / Hardware Builder / Hardware Wiring                       |
-| Christopher  | Hardware Wiring |
 | Hugo | Hardware Builder / Hardware Wiring |
-| Joyce K. | Programmer |
 | Isaac | Hardware Builder / Hardware Wiring |
-| Matthew | Hardware Builder |
+| Matthew | Donor |
+| Austin | Donor |
 | Mr. Tito Vicente Maia, S.T. | Teacher and Main Advisor |
 
 ---
@@ -126,6 +114,11 @@ Arduino-Dual-Drone/
 
 > Documentation photos, test footage, and performance stats coming soon.
 
+---
+## 📔 Summary
+> We failed at making a flying drone due to insufficient funding and lack of research; however, from this failed project, we gained a lot of experience dealing with hardware, embedded quirks, and integration with Bluetooth software.
+
+> TLDR: We failed but gained so much experience 🐧✨
 ---
 
 ## 🚀 Big Projects Start Small
